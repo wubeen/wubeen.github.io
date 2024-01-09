@@ -36,7 +36,7 @@ sections:
         gradient_end: '#1976d2'
         gradient_start: '#004ba0'
         text_color_light: true
-  - block: about.biography
+  - block: bio
     id: about
     content:
       title: Biography
@@ -201,7 +201,7 @@ sections:
       title: Recent Publications
       text: |-
         {{% callout note %}}
-        Quickly discover relevant content by [filtering publications](./publication/).
+        Quickly discover relevant content by [filtering publications](./publication/conference-paper).
         {{% /callout %}}
       filters:
         folders:

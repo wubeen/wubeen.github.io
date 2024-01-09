@@ -34,10 +34,10 @@ interests:
 # Education to show in About widget
 education:
   courses:
-    - course: Ph.D in Computer Science,
+    - course: Ph.D in Computer Science
       institution: The Hong Kong University of Science and Technology(HKUST)
-      year: 2017.11
-    - course: B.S. in Computer Science,
+      year: 2017
+    - course: B.S. in Computer Science
       institution: Fudan University
       year: 2012
 
