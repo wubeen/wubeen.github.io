@@ -25,16 +25,24 @@ organizations:
     # url: https://www.stanford.edu/
 
 # Short bio (displayed in user profile at end of posts)
-bio: Bin Wu currently is a Research Scientist at Database and Storage Lab, Alibaba Cloud. Before that, he is a researcher at Noah’s Ark Lab of Huawei. His research interest lies in the cross-intersection of theoretical computer science, large-scale database management systems and machine learning. He received his Ph.D in Computer Science from HKSUT under the supervision of <a href="https://www.cse.ust.hk/~yike/">Prof. Ke Yi</a> in 2017 and received his bachelor’s degree from Fudan University in 2012. He is a recipient of ACM SIGMOD Research Highlight Award(2017) and ACM SIGMOD Best Paper Award(2016).
+bio: Bin Wu, Research Scientist at Database and Storage Lab, Alibaba Cloud. 
+  # Before that, he is a researcher at Noah’s Ark Lab of Huawei. His research interest lies in the cross-intersection of theoretical computer science, large-scale database management systems and machine learning. He received his Ph.D in Computer Science from HKSUT under the supervision of <a href="https://www.cse.ust.hk/~yike/">Prof. Ke Yi</a> in 2017 and received his bachelor’s degree from Fudan University in 2012. He is a recipient of ACM SIGMOD Research Highlight Award(2017) and ACM SIGMOD Best Paper Award(2016).
+Content: Bin Wu, Research Scientist at Database and Storage Lab, Alibaba Cloud. 
+  Before that, he is a researcher at Noah’s Ark Lab of Huawei. His research interest lies in the cross-intersection of theoretical computer science, large-scale database management systems and machine learning. He received his Ph.D in Computer Science from HKSUT under the supervision of <a href="https://www.cse.ust.hk/~yike/">Prof. Ke Yi</a> in 2017 and received his bachelor’s degree from Fudan University in 2012. He is a recipient of ACM SIGMOD Research Highlight Award(2017) and ACM SIGMOD Best Paper Award(2016).
 # Interests to show in About widget
-interests:
-  - Large-scale database management systems
-  - Machine learning
+# Interests to show in About widget
+interests: 
+  - OLAP algorithms and systems
+  - Query optimization
+  - DB for machine learning
+  - AI for large-scale systems
 
+# (online analytical query processing, approximate query processing, query optimization)
 # Education to show in About widget
 education:
   courses:
     - course: Ph.D in Computer Science
+      supervisor: Prof. Ke Yi
       institution: The Hong Kong University of Science and Technology(HKUST)
       year: 2017
     - course: B.S. in Computer Science
