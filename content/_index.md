@@ -65,7 +65,7 @@ sections:
         - title: Research Scientist
           company: Alibaba Group
           company_url: ''
-          # company_logo: org-gc
+          company_logo: org-gc
           location: Hangzhou, China
           date_start: '2018-11'
           date_end: ''
@@ -78,7 +78,7 @@ sections:
         - title: Researcher
           company: Noah’s Ark Lab, Huawei
           company_url: ''
-          # company_logo: org-x
+          company_logo: org-x
           location: Hong Kong, China
           date_start: '2017-08'
           date_end: '2018-10'
