@@ -63,9 +63,9 @@ sections:
       #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
       items:
         - title: Research Scientist
-          company: Alibaba Group
+          company: Alibaba Cloud, Alibaba Group
           company_url: ''
-          company_logo: org-gc
+          company_logo: alibaba
           location: Hangzhou, China
           date_start: '2018-12-13'
           date_end: ''
@@ -74,7 +74,7 @@ sections:
         - title: Researcher
           company: Noah’s Ark Lab, Huawei
           company_url: ''
-          company_logo: org-x
+          company_logo: huawei
           location: Hong Kong, China
           date_start: '2017-08-01'
           date_end: '2018-10-01'
