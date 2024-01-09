@@ -67,7 +67,7 @@ sections:
           company_url: ''
           company_logo: org-gc
           location: Hangzhou, China
-          date_start: '2018-11'
+          date_start: '2018-12-13'
           date_end: ''
           # description: |2-
           #     Responsibilities include:
@@ -80,8 +80,8 @@ sections:
           company_url: ''
           company_logo: org-x
           location: Hong Kong, China
-          date_start: '2017-08'
-          date_end: '2018-10'
+          date_start: '2017-08-01'
+          date_end: '2018-10-01'
           description: Meta-learning and few-shot learning: Conducted research on Meta-learning and few-shot learning related topics and resolved some real world problems with existing meta learning methods.
     design:
       columns: '2'
