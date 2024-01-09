@@ -21,11 +21,11 @@ role: Research Scientist
 
 # Organizations/Affiliations to show in About widget
 organizations:
-  - name: Stanford University
-    url: https://www.stanford.edu/
+  - name: Database and Storage Lab, Alibaba Cloud
+    # url: https://www.stanford.edu/
 
 # Short bio (displayed in user profile at end of posts)
-bio: Bin Wu currently is a Research Scientist at Database and Storage Lab, DAMO Academy, Alibaba Group. Before that, he is a researcher at Noah’s Ark Lab of Huawei. His research interest lies in the cross-intersection of theoretical computer science, large-scale database management systems and machine learning. He received his Ph.D in Computer Science from HKSUT under the supervision of <a href="https://www.cse.ust.hk/~yike/">Prof. Ke Yi</a> in 2017 and received his bachelor’s degree from Fudan University in 2012. He is a recipient of ACM SIGMOD Research Highlight Award(2017) and ACM SIGMOD Best Paper Award(2016).
+bio: Bin Wu currently is a Research Scientist at Database and Storage Lab, Alibaba Cloud. Before that, he is a researcher at Noah’s Ark Lab of Huawei. His research interest lies in the cross-intersection of theoretical computer science, large-scale database management systems and machine learning. He received his Ph.D in Computer Science from HKSUT under the supervision of <a href="https://www.cse.ust.hk/~yike/">Prof. Ke Yi</a> in 2017 and received his bachelor’s degree from Fudan University in 2012. He is a recipient of ACM SIGMOD Research Highlight Award(2017) and ACM SIGMOD Best Paper Award(2016).
 # Interests to show in About widget
 interests:
   - Large-scale database management systems
@@ -48,7 +48,7 @@ skills:
     items:
       - name: Python
         description: ''
-        percent: 80
+        percent: 100
         icon: python
         icon_pack: fab
       - name: C/C++
@@ -58,7 +58,7 @@ skills:
         icon_pack: fas
       - name: JAVA
         description: ''
-        percent: 40
+        percent: 80
         icon: database
         icon_pack: fas
   - name: Hobbies
@@ -67,7 +67,7 @@ skills:
     items:
       - name: Soccer 
         description: ''
-        percent: 60
+        percent: 100
         icon: person-hiking
         icon_pack: fas
       - name: Crossfit
@@ -77,7 +77,7 @@ skills:
         icon_pack: fas
       - name: Motorcycle
         description: ''
-        percent: 80
+        percent: 100
         icon: camera-retro
         icon_pack: fas
 
