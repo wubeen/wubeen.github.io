@@ -50,8 +50,9 @@ sections:
       title: Who am I?
       subtitle:
       text: |-
-       Bin Wu currently is a Research Scientist at Database and Storage Lab, Alibaba Cloud. 
-        Before that, he is a researcher at Noah’s Ark Lab of Huawei. His research interest lies in the cross-intersection of theoretical computer science, large-scale database management systems and machine learning. He received his Ph.D in Computer Science from HKSUT under the supervision of <a href="https://www.cse.ust.hk/~yike/">Prof. Ke Yi</a> in 2017 and received his bachelor’s degree from Fudan University in 2012. He is a recipient of ACM SIGMOD Research Highlight Award(2017) and ACM SIGMOD Best Paper Award(2016). 
+       Bin Wu is a Research Scientist at the Database and Storage Lab at Alibaba Cloud. His work centers on driving innovation from Data+AI research to production, where he develops novel methods for top-tier conferences and deploys them at scale to solve critical business challenges. His current research focuses on Agentic RAG, NL2SQL, and AI Agents. Additionally, his research interests include theoretical computer science and large-scale database management systems.
+
+      Previously, he was a researcher at Huawei's Noah's Ark Lab. He received his Ph.D. in Computer Science from The Hong Kong University of Science and Technology (HKUST) in 2018, supervised by <a href="https://www.cse.ust.hk/~yike/">Prof. Ke Yi</a>, and his bachelor's degree from Fudan University in 2012. He is a recipient of the ACM SIGMOD Best Paper Award (2016) and the Research Highlight Award (2017).
       # Contact (add or remove contact options as necessary)
       # email: test@example.org
       # phone: 888 888 88 88
@@ -124,7 +125,7 @@ sections:
           date_start: '2018-12-13'
           date_end: ''
           description: 
-            Research on DB4AI & AI4DB
+          Drove innovation from DATA+AI related research to production, publishing novel methods in top-tier conferences while deploying them at scale to solve key business challenges.
         - title: Researcher
           company: Noah’s Ark Lab, Huawei
           company_url: ''
@@ -132,7 +133,7 @@ sections:
           location: Hong Kong, China
           date_start: '2017-08-01'
           date_end: '2018-10-01'
-          description: Conducted research on Meta-learning and few-shot learning related topics and resolved some real world problems with existing meta learning methods.
+          description: Pioneered research in meta-learning and few-shot learning and validated these approaches by successfully applying them to solve real-world problems.
     design:
       columns: '2'
   - block: accomplishments

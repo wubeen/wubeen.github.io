@@ -27,15 +27,17 @@ organizations:
 # Short bio (displayed in user profile at end of posts)
 bio: Bin Wu, Research Scientist at Database and Storage Lab, Alibaba Cloud. 
   # Before that, he is a researcher at Noah’s Ark Lab of Huawei. His research interest lies in the cross-intersection of theoretical computer science, large-scale database management systems and machine learning. He received his Ph.D in Computer Science from HKSUT under the supervision of <a href="https://www.cse.ust.hk/~yike/">Prof. Ke Yi</a> in 2017 and received his bachelor’s degree from Fudan University in 2012. He is a recipient of ACM SIGMOD Research Highlight Award(2017) and ACM SIGMOD Best Paper Award(2016).
-Content: Bin Wu, Research Scientist at Database and Storage Lab, Alibaba Cloud. 
-  Before that, he is a researcher at Noah’s Ark Lab of Huawei. His research interest lies in the cross-intersection of theoretical computer science, large-scale database management systems and machine learning. He received his Ph.D in Computer Science from HKSUT under the supervision of <a href="https://www.cse.ust.hk/~yike/">Prof. Ke Yi</a> in 2017 and received his bachelor’s degree from Fudan University in 2012. He is a recipient of ACM SIGMOD Research Highlight Award(2017) and ACM SIGMOD Best Paper Award(2016).
+Content: Bin Wu is a Research Scientist at the Database and Storage Lab at Alibaba Cloud. His work centers on driving innovation from Data+AI research to production, where he develops novel methods for top-tier conferences and deploys them at scale to solve critical business challenges. His current research focuses on Agentic RAG, NL2SQL, and AI Agents. Additionally, his research interests include theoretical computer science and large-scale database management systems.
+
+Previously, he was a researcher at Huawei's Noah's Ark Lab. He received his Ph.D. in Computer Science from The Hong Kong University of Science and Technology (HKUST) in 2018, supervised by <a href="https://www.cse.ust.hk/~yike/">Prof. Ke Yi</a>, and his bachelor's degree from Fudan University in 2012. He is a recipient of the ACM SIGMOD Best Paper Award (2016) and the Research Highlight Award (2017).
 # Interests to show in About widget
 # Interests to show in About widget
-interests: 
+interests:
+  - Agentic RAG, NL2SQL, and AI Agents
   - OLAP algorithms and systems
   - Query optimization
-  - DB for machine learning
-  - AI for large-scale systems
+  # - DB for machine learning
+  # - AI for large-scale systems
 
 # (online analytical query processing, approximate query processing, query optimization)
 # Education to show in About widget
@@ -115,9 +117,14 @@ social:
   # Link to a PDF of your resume/CV.
   # To use: copy your resume to `static/uploads/resume.pdf`, enable `ai` icons in `params.yaml`,
   # and uncomment the lines below.
-  # - icon: cv
-  #   icon_pack: ai
-  #   link: uploads/resume.pdf
+  - icon: cv
+    icon_pack: ai
+    text: Resume
+    link: uploads/resume-en.pdf
+  - icon: cv
+    icon_pack: ai
+    text: 简历
+    link: uploads/resume-cn.pdf
 
 # Highlight the author in author lists? (true/false)
 highlight_name: true
