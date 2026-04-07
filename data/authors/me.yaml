@@ -1,0 +1,102 @@
+schema: hugoblox/author/v1
+slug: me
+is_owner: true
+name:
+  display: Bin Wu
+  given: Bin
+  family: Wu
+  alternate: ''
+  pronunciation: ''
+  pronouns: ''
+postnominals:
+  - PhD
+status:
+  icon: "☕️"
+role: Research Scientist
+bio: |
+  Research Scientist at Alibaba Cloud, working on Agentic RAG, NL2SQL, and AI agents.
+
+affiliations:
+  - name: Database and Storage Lab, Alibaba Cloud
+    url: ''
+
+links:
+  - icon: at-symbol
+    url: '/#contact'
+    label: E-mail Me
+  - icon: brands/x
+    url: https://twitter.com/wubeen
+  - icon: brands/github
+    url: https://github.com/wubeen
+  - icon: brands/linkedin
+    url: https://www.linkedin.com/in/bin-wu-15213438/
+  - icon: academicons/google-scholar
+    url: https://scholar.google.com.hk/citations?user=YnIdL7oAAAAJ&hl=en
+
+interests:
+  - Agentic RAG, NL2SQL, and AI Agents
+  - OLAP algorithms and systems
+  - Query optimization
+
+education:
+  - degree: PhD in Computer Science
+    institution: The Hong Kong University of Science and Technology (HKUST)
+    start: 2012-09-01
+    end: 2017-11-30
+    summary: |
+      Supervised by Prof. Ke Yi. Research on approximate query processing and streaming algorithms.
+  - degree: BS in Computer Science
+    institution: Fudan University
+    start: 2008-09-01
+    end: 2012-06-30
+
+experience:
+  - role: Research Scientist
+    org: Alibaba Cloud, Alibaba Group
+    start: 2018-12-13
+    summary: |
+      Drove innovation from Data+AI research to production, publishing novel methods in top-tier conferences while deploying them at scale to solve key business challenges.
+  - role: Researcher
+    org: Noah's Ark Lab, Huawei
+    start: 2017-08-01
+    end: 2018-10-01
+    summary: |
+      Pioneered research in meta-learning and few-shot learning, validating approaches on real-world problems.
+
+skills:
+  - name: Technical Skills
+    items:
+      - label: Python
+        level: 5
+      - label: C/C++
+        level: 5
+      - label: Java
+        level: 4
+  - name: Hobbies
+    items:
+      - label: Soccer
+        level: 5
+      - label: Crossfit
+        level: 5
+      - label: Motorcycle
+        level: 5
+
+languages:
+  - name: Chinese
+    level: 5
+    label: Native
+  - name: English
+    level: 5
+    label: Fluent
+
+awards:
+  - title: ACM SIGMOD Research Highlight Award
+    awarder: ACM SIGMOD
+    date: "2017-06-25"
+    summary: Recognized for outstanding research contribution.
+    icon: hero/trophy
+  - title: ACM SIGMOD Best Paper Award
+    awarder: ACM SIGMOD
+    date: "2016-06-01"
+    summary: Best paper award at the top database conference.
+    icon: hero/trophy

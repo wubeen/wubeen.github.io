@@ -1,58 +1,34 @@
 ---
-# Display name
 title: Bin Wu
-
-# Name pronunciation (optional)
-# name_pronunciation: Bin Wu
-
-# Full name (for SEO)
 first_name: Bin
 last_name: Wu
 
-# Status emoji
 status:
   icon: ☕️
 
-# Is this the primary user of the site?
 superuser: true
-
-# Role/position/tagline
 role: Research Scientist
 
-# Organizations/Affiliations to show in About widget
 organizations:
   - name: Database and Storage Lab, Alibaba Cloud
-    # url: https://www.stanford.edu/
 
-# Short bio (displayed in user profile at end of posts)
-bio: Bin Wu, Research Scientist at Database and Storage Lab, Alibaba Cloud. 
-  # Before that, he is a researcher at Noah’s Ark Lab of Huawei. His research interest lies in the cross-intersection of theoretical computer science, large-scale database management systems and machine learning. He received his Ph.D in Computer Science from HKSUT under the supervision of <a href="https://www.cse.ust.hk/~yike/">Prof. Ke Yi</a> in 2017 and received his bachelor’s degree from Fudan University in 2012. He is a recipient of ACM SIGMOD Research Highlight Award(2017) and ACM SIGMOD Best Paper Award(2016).
-Content: Bin Wu is a Research Scientist at the Database and Storage Lab at Alibaba Cloud. His work centers on driving innovation from Data+AI research to production, where he develops novel methods for top-tier conferences and deploys them at scale to solve critical business challenges. His current research focuses on Agentic RAG, NL2SQL, and AI Agents. Additionally, his research interests include theoretical computer science and large-scale database management systems.
+bio: Research Scientist at Alibaba Cloud, working on Agentic RAG, NL2SQL, and AI agents.
 
-Previously, he was a researcher at Huawei's Noah's Ark Lab. He received his Ph.D. in Computer Science from The Hong Kong University of Science and Technology (HKUST) in 2018, supervised by <a href="https://www.cse.ust.hk/~yike/">Prof. Ke Yi</a>, and his bachelor's degree from Fudan University in 2012. He is a recipient of the ACM SIGMOD Best Paper Award (2016) and the Research Highlight Award (2017).
-# Interests to show in About widget
-# Interests to show in About widget
 interests:
   - Agentic RAG, NL2SQL, and AI Agents
   - OLAP algorithms and systems
   - Query optimization
-  # - DB for machine learning
-  # - AI for large-scale systems
 
-# (online analytical query processing, approximate query processing, query optimization)
-# Education to show in About widget
 education:
   courses:
     - course: Ph.D in Computer Science
       supervisor: Prof. Ke Yi
-      institution: The Hong Kong University of Science and Technology(HKUST)
+      institution: The Hong Kong University of Science and Technology (HKUST)
       year: 2017
     - course: B.S. in Computer Science
       institution: Fudan University
       year: 2012
 
-# Skills
-# For available icons, see: https://docs.hugoblox.com/getting-started/page-builder/#icons
 skills:
   - name: Technical
     items:
@@ -66,7 +42,7 @@ skills:
         percent: 100
         icon: chart-line
         icon_pack: fas
-      - name: JAVA
+      - name: Java
         description: ''
         percent: 80
         icon: database
@@ -75,7 +51,7 @@ skills:
     color: '#eeac02'
     color_border: '#f0bf23'
     items:
-      - name: Soccer 
+      - name: Soccer
         description: ''
         percent: 100
         icon: person-hiking
@@ -91,10 +67,6 @@ skills:
         icon: camera-retro
         icon_pack: fas
 
-# Social/Academic Networking
-# For available icons, see: https://docs.hugoblox.com/getting-started/page-builder/#icons
-#   For an email link, use "fas" icon pack, "envelope" icon, and a link in the
-#   form "mailto:your-email@example.com" or "/#contact" for contact widget.
 social:
   - icon: envelope
     icon_pack: fas
@@ -105,7 +77,7 @@ social:
     label: Follow me on Twitter
     display:
       header: true
-  - icon: graduation-cap # Alternatively, use `google-scholar` icon from `ai` icon pack
+  - icon: graduation-cap
     icon_pack: fas
     link: https://scholar.google.com.hk/citations?user=YnIdL7oAAAAJ&hl=en
   - icon: github
@@ -114,9 +86,6 @@ social:
   - icon: linkedin
     icon_pack: fab
     link: https://www.linkedin.com/in/bin-wu-15213438/
-  # Link to a PDF of your resume/CV.
-  # To use: copy your resume to `static/uploads/resume.pdf`, enable `ai` icons in `params.yaml`,
-  # and uncomment the lines below.
   - icon: cv
     icon_pack: ai
     text: Resume
@@ -126,9 +95,5 @@ social:
     text: 简历
     link: uploads/resume-cn.pdf
 
-# Highlight the author in author lists? (true/false)
 highlight_name: true
 ---
-
-<!-- Chien Shiung Wu is a professor of artificial intelligence at the Stanford AI Lab. Her research interests include distributed robotics, mobile computing and programmable matter. She leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks. -->
-{style="text-align: justify;"}

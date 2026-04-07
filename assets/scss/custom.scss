@@ -1,0 +1,21 @@
+/* Overrides for HugoBlox Kit v2 (Tailwind-based).
+   Hugo Blox auto-loads assets/scss/custom.scss. */
+
+/* Bold + highlight the site owner's name in citation / publication author lists. */
+.li-cite-author a,
+.article-metadata a[href=""],
+.article-metadata a:not([href]),
+.article-metadata a[href="/"] {
+  font-weight: 700 !important;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+}
+
+/* Hide author names in the Featured Publications (article-grid) section. */
+#papers .text-sm.text-gray-500,
+#papers .text-sm.text-gray-400,
+#papers [class*="text-sm"][class*="text-gray"],
+#papers .article-metadata {
+  display: none !important;
+}
