@@ -12,7 +12,19 @@ authors:
   - Tianhuan Yu
   - Yi Yi
   - Jianhong Hu
+  - Cen Zheng
+  - Bo Wen
+  - Hanbang Zheng
+  - Lunfan Xu
+  - Sicheng Pan
   - Bin Wu
+  - Xiao He
+  - Ye Li
+  - Jian Tan
+  - Sheng Wang
+  - Dan Pei
+  - Wei Zhang
+  - Feifei Li
 
 date: '2023-08-01T00:00:00Z'
 publishDate: '2023-08-01T00:00:00Z'
