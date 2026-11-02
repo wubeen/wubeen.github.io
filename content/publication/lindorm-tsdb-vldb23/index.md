@@ -20,8 +20,13 @@ publishDate: '2023-08-01T00:00:00Z'
 publication_types: ['paper-conference']
 
 publication: 'Proceedings of the VLDB Endowment, 16(12), 2023'
+hugoblox:
+  ids:
+    doi: '10.14778/3611540.3611559'
 
 featured: false
 
-
+links:
+  - type: pdf
+    url: 'https://www.vldb.org/pvldb/vol16/p3715-zheng.pdf'
 ---

@@ -14,6 +14,9 @@ publishDate: '2023-03-01T00:00:00Z'
 publication_types: ['paper-conference']
 
 publication: 'Proceedings of the 28th ACM International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS 2023)'
+hugoblox:
+  ids:
+    doi: '10.1145/3623278.3624771'
 
 featured: false
 

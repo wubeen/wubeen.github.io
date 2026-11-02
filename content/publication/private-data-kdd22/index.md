@@ -14,6 +14,9 @@ publishDate: '2022-08-01T00:00:00Z'
 publication_types: ['paper-conference']
 
 publication: 'Proceedings of the 28th ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD 2022)'
+hugoblox:
+  ids:
+    doi: '10.1145/3534678.3539424'
 
 featured: false
 

@@ -24,5 +24,7 @@ publication: '24th USENIX Conference on File and Storage Technologies (FAST 2026
 
 featured: false
 
-
+links:
+  - type: pdf
+    url: 'https://www.usenix.org/system/files/fast26-hu.pdf'
 ---
