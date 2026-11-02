@@ -1,0 +1,329 @@
+/* Faculty folio: ink-and-paper academic homepage.
+   HugoBlox Kit v2 loads this file from the document head.
+   Section wrappers are classed blox-_ by the theme, so rules use section ids. */
+
+:root {
+  --folio-paper: #f4f1ea;
+  --folio-ink: #1c1917;
+  --folio-navy: #16324a;
+  --folio-rule: rgba(22, 50, 74, 0.16);
+  --folio-brass: #e6d3b0;
+}
+
+body.page-wrapper {
+  background-color: var(--folio-paper);
+  color: var(--folio-ink);
+}
+
+.dark body.page-wrapper {
+  --folio-paper: #14181f;
+  --folio-ink: #ece8e1;
+  --folio-rule: rgba(236, 232, 225, 0.14);
+  background-color: var(--folio-paper);
+  color: var(--folio-ink);
+}
+
+#site-header .nav-link:hover,
+.dark #site-header .nav-link:hover,
+#site-header .theme-toggle,
+#site-header label,
+#site-header [data-hb-language-chooser],
+#site-header [data-hb-language-chooser] span {
+  color: var(--folio-brass);
+}
+
+#site-header [data-hb-language-chooser] {
+  color: #f7f4ee;
+  background: transparent;
+}
+
+#site-header [data-hb-language-chooser]:hover {
+  color: var(--folio-brass);
+  background: transparent;
+}
+
+/* Hiring notice directly under the navigation. */
+#news {
+  background: var(--folio-navy);
+  color: #f7f4ee;
+}
+
+#news .max-w-prose {
+  width: min(48rem, 100%);
+  max-width: 48rem;
+  align-items: flex-start;
+  text-align: left;
+  padding-top: 1.15rem;
+  padding-bottom: 1.2rem;
+  gap: 0.35rem;
+}
+
+#news .text-3xl {
+  margin: 0;
+  color: var(--folio-brass);
+  font-family: "Lora", "Source Serif 4", Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+#news .prose {
+  color: #f7f4ee;
+  font-size: 1.02rem;
+  line-height: 1.65;
+}
+
+#news .prose p {
+  margin: 0;
+  color: #f7f4ee;
+}
+
+#news .prose a {
+  color: var(--folio-brass);
+  font-weight: 700;
+  text-underline-offset: 2px;
+}
+
+#site-header.header {
+  box-shadow: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.navbar-brand,
+h1,
+h2,
+h3,
+#papers .text-3xl,
+#publications .text-3xl,
+#awards .text-3xl,
+#experience h2 {
+  font-family: "Lora", "Source Serif 4", Georgia, serif;
+  letter-spacing: -0.02em;
+}
+
+/* Profile */
+#about .resume-biography {
+  padding-top: 2.25rem !important;
+  padding-bottom: 0.25rem !important;
+}
+
+#about h1 {
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+#about .bio-text {
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+#about .bio-text p + p {
+  margin-top: 0.9rem;
+}
+
+/* Labeled profile links instead of anonymous icon circles. */
+#about .flex.flex-wrap.justify-center {
+  gap: 0.45rem;
+  max-width: 22rem;
+}
+
+#about .flex.flex-wrap.justify-center > a {
+  width: auto !important;
+  height: auto !important;
+  min-height: 2.05rem;
+  padding: 0.28rem 0.65rem;
+  border-radius: 999px;
+  gap: 0.35rem;
+  box-shadow: none;
+  background: transparent;
+  border: 1px solid var(--folio-rule);
+  color: var(--folio-navy);
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transform: none;
+}
+
+#about .flex.flex-wrap.justify-center > a:hover {
+  transform: none;
+  box-shadow: none;
+  background: rgba(22, 50, 74, 0.06);
+  color: var(--folio-navy);
+}
+
+#about .flex.flex-wrap.justify-center > a svg {
+  width: 1rem;
+  height: 1rem;
+  flex: none;
+}
+
+#about .flex.flex-wrap.justify-center > a::after {
+  content: attr(title);
+  line-height: 1;
+}
+
+.dark #about .flex.flex-wrap.justify-center > a {
+  color: var(--folio-ink);
+  border-color: var(--folio-rule);
+  background: transparent;
+}
+
+.dark #about .flex.flex-wrap.justify-center > a:hover {
+  background: rgba(236, 232, 225, 0.08);
+  color: var(--folio-brass);
+}
+
+/* Solid CV button, not a gradient pill. */
+#about a.bg-gradient-to-r {
+  background-image: none !important;
+  background-color: var(--folio-navy) !important;
+  border-radius: 2px;
+  box-shadow: none;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  padding: 0.7rem 1.15rem;
+  font-size: 0.95rem;
+}
+
+#about a.bg-gradient-to-r:hover {
+  background-color: #0f2436 !important;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Education is shown once, with dates and the supervisor note, in the timeline. */
+#about .mb-16:has(h3) {
+  display: none;
+}
+
+#about span.rounded-full {
+  background: transparent !important;
+  border-radius: 2px;
+  border-color: var(--folio-rule);
+  color: var(--folio-ink);
+  font-weight: 600;
+}
+
+.dark #about span.rounded-full {
+  color: var(--folio-ink);
+}
+
+/* Section measure and headings */
+#papers > .flex,
+#publications > .flex,
+#awards > .flex,
+#experience > .mx-auto {
+  width: min(48rem, 100%);
+  max-width: 48rem;
+  margin-inline: auto;
+  align-items: stretch;
+}
+
+#experience h2,
+#awards .text-3xl,
+#papers .text-3xl,
+#publications .text-3xl {
+  text-align: left;
+  font-size: 1.65rem;
+  font-weight: 650;
+  border-bottom: 1px solid var(--folio-rule);
+  padding-bottom: 0.35rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+#papers .mt-16,
+#publications .mt-16 {
+  margin-top: 0.25rem !important;
+}
+
+#papers .container,
+#publications .container {
+  max-width: 48rem;
+}
+
+/* Publication lists */
+.view-citation {
+  width: 100%;
+  margin: 0 !important;
+  padding: 0.85rem 0 0.9rem;
+  border-bottom: 1px solid var(--folio-rule);
+  line-height: 1.55;
+}
+
+.view-citation .pub-icon {
+  display: none;
+}
+
+#papers .view-citation {
+  border-left: 3px solid var(--folio-navy);
+  padding-left: 0.85rem;
+}
+
+.dark #papers .view-citation {
+  border-left-color: var(--folio-brass);
+}
+
+.callout {
+  background: transparent !important;
+  border-radius: 0;
+  border-left-color: var(--folio-navy) !important;
+}
+
+.dark .callout {
+  border-left-color: var(--folio-brass) !important;
+}
+
+/* Bold the site owner's name in citation and publication author lists. */
+.li-cite-author a,
+.article-metadata a[href=""],
+.article-metadata a:not([href]),
+.article-metadata a[href="/"] {
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+/* Timeline and award cards on paper, not glossy widgets. */
+#experience .rounded-xl,
+#awards .rounded-lg {
+  border-radius: 2px;
+  box-shadow: none;
+  background-color: rgba(255, 255, 255, 0.55);
+}
+
+.dark #experience .rounded-xl,
+.dark #awards .rounded-lg {
+  background-color: #1b222b !important;
+  border-color: #31404c !important;
+}
+
+#experience .blur-md {
+  display: none;
+}
+
+/* Publication pages should not stretch an empty column to the viewport. */
+article.flex {
+  min-height: 0 !important;
+}
+
+article h1 {
+  font-family: "Lora", "Source Serif 4", Georgia, serif;
+  letter-spacing: -0.025em;
+}
+
+@media (max-width: 640px) {
+  #about .resume-biography {
+    padding-top: 1.15rem !important;
+  }
+
+  #about .flex.flex-wrap.justify-center {
+    max-width: none;
+  }
+
+  .view-citation {
+    font-size: 0.95rem;
+  }
+}

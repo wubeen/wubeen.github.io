@@ -24,21 +24,31 @@ affiliations:
 links:
   - icon: at-symbol
     url: 'mailto:wubeen@outlook.com'
-    label: E-mail Me
-  - icon: brands/x
-    url: https://twitter.com/wubeen
-  - icon: brands/github
-    url: https://github.com/wubeen
-  - icon: brands/linkedin
-    url: https://www.linkedin.com/in/bin-wu-15213438/
+    label: E-mail
   - icon: academicons/google-scholar
     url: https://scholar.google.com/citations?user=YnIdL7oAAAAJ&hl=en
+    label: Scholar
   - icon: academicons/dblp
     url: https://dblp.org/pid/98/4432-3.html
+    label: DBLP
   - icon: academicons/orcid
     url: https://orcid.org/0000-0002-4743-1006
+    label: ORCID
   - icon: academicons/semantic-scholar
     url: https://www.semanticscholar.org/author/2152563567
+    label: Semantic Scholar
+  - icon: brands/linkedin
+    url: https://www.linkedin.com/in/bin-wu-15213438/
+    label: LinkedIn
+  - icon: brands/x
+    url: https://twitter.com/wubeen
+    label: X
+  - icon: brands/github
+    url: https://github.com/wubeen
+    label: GitHub
+  - icon: academicons/cv
+    url: uploads/resume-en.pdf
+    label: CV
 
 interests:
   - Agentic RAG, NL2SQL, and AI Agents

@@ -1,0 +1,85 @@
+schema: hugoblox/author/v1
+slug: me
+is_owner: true
+name:
+  display: Bin Wu
+  given: Bin
+  family: Wu
+role: 研究科学家 / 资深技术研究专家
+bio: |
+  阿里云数据库与存储实验室研究科学家 / 资深技术研究专家，研究方向包括 Agentic RAG、NL2SQL 与 AI Agent。
+
+affiliations:
+  - name: 阿里云数据库与存储实验室
+    url: ''
+
+links:
+  - icon: at-symbol
+    url: 'mailto:wubeen@outlook.com'
+    label: 邮箱
+  - icon: academicons/google-scholar
+    url: https://scholar.google.com/citations?user=YnIdL7oAAAAJ&hl=zh-CN
+    label: Google 学术
+  - icon: academicons/dblp
+    url: https://dblp.org/pid/98/4432-3.html
+    label: DBLP
+  - icon: academicons/orcid
+    url: https://orcid.org/0000-0002-4743-1006
+    label: ORCID
+  - icon: academicons/semantic-scholar
+    url: https://www.semanticscholar.org/author/2152563567
+    label: 语义学者
+  - icon: brands/linkedin
+    url: https://www.linkedin.com/in/bin-wu-15213438/
+    label: 领英
+  - icon: brands/x
+    url: https://twitter.com/wubeen
+    label: X
+  - icon: brands/github
+    url: https://github.com/wubeen
+    label: GitHub
+  - icon: academicons/cv
+    url: uploads/resume-cn.pdf
+    label: 简历
+
+interests:
+  - Agentic RAG、NL2SQL 与 AI Agent
+  - OLAP 算法与系统
+  - 查询优化
+
+education:
+  - degree: 计算机科学博士
+    institution: 香港科技大学（HKUST）
+    start: 2012-09-01
+    end: 2017-11-30
+    summary: |
+      导师为 Prof. Ke Yi。研究方向为近似查询处理与流算法。
+  - degree: 计算机科学学士
+    institution: 复旦大学
+    start: 2008-09-01
+    end: 2012-06-30
+
+experience:
+  - role: 研究科学家 / 资深技术研究专家
+    org: 阿里云，阿里巴巴集团
+    start: 2018-12-13
+    summary: |
+      推动 Data+AI 研究落地到生产：在顶级会议发表新方法，并规模化部署以解决关键业务问题。
+  - role: 研究员
+    org: 华为诺亚方舟实验室
+    start: 2017-08-01
+    end: 2018-10-01
+    summary: |
+      开展元学习与小样本学习研究，并在真实问题上验证方法。
+
+awards:
+  - title: ACM SIGMOD 研究亮点奖
+    awarder: ACM SIGMOD
+    date: "2017-06-25"
+    summary: 表彰突出的研究贡献。
+    icon: hero/trophy
+  - title: ACM SIGMOD 最佳论文奖
+    awarder: ACM SIGMOD
+    date: "2016-06-01"
+    summary: 数据库领域顶级会议的最佳论文奖。
+    icon: hero/trophy

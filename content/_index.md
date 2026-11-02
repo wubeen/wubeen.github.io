@@ -5,10 +5,17 @@ date: 2022-10-24
 type: landing
 
 design:
-  spacing: '6rem'
+  spacing: '3.25rem'
 
 sections:
+  - block: markdown
+    id: news
+    content:
+      title: We're hiring
+      text: |
+        **November 2026.** I'm hiring! We are looking for researchers/engineers to work on data-driven RSI (recursive self-improvement). Candidates with a background in LLM post-training or model inference acceleration/optimization are welcome to contact me at [wubeen@outlook.com](mailto:wubeen@outlook.com).
   - block: resume-biography-3
+    id: about
     content:
       username: me
       text: |
@@ -19,32 +26,45 @@ sections:
         text: Download CV
         url: uploads/resume-en.pdf
       headings:
-        about: ''
-        education: ''
-        interests: ''
+        about: Biography
+        education: Education
+        interests: Research interests
     design:
-      background:
-        gradient_mesh:
-          enable: true
       name:
-        size: md
+        size: sm
       avatar:
         size: medium
         shape: circle
+  - block: resume-experience
+    id: experience
+    content:
+      username: me
+    design:
+      date_format: 'Jan 2006'
+  - block: resume-awards
+    id: awards
+    content:
+      title: Awards
+      username: me
+    design:
+      date_format: '2006'
   - block: collection
     id: papers
     content:
       title: Featured Publications
+      count: 0
       filters:
         folders:
           - publication
         featured_only: true
     design:
-      view: article-grid
-      columns: 2
+      view: citation
+      columns: 1
   - block: collection
+    id: publications
     content:
-      title: Recent Publications
+      title: Publications
+      count: 0
       text: |-
         > [!NOTE]
         > Visit [Google Scholar](https://scholar.google.com/citations?user=YnIdL7oAAAAJ&hl=en) for the full list.
@@ -55,4 +75,5 @@ sections:
         exclude_featured: false
     design:
       view: citation
+      columns: 1
 ---

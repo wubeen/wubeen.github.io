@@ -14,26 +14,29 @@ hugoblox:
     mode: system
     pack: "default"
     colors:
-      primary: ""
-      secondary: ""
-      neutral: ""
+      primary: "#1b3a4b"
+      secondary: "#8c4a2f"
+      neutral: "stone"
     colors_light: {}
-    colors_dark: {}
+    colors_dark:
+      primary: "#d4c4a8"
+      secondary: "#9ec4d4"
+      neutral: "stone"
     surfaces:
       background: ""
       foreground: ""
       header:
-        background: ""
-        foreground: ""
+        background: "#16324a"
+        foreground: "#f7f4ee"
       footer:
-        background: ""
-        foreground: ""
+        background: "#16324a"
+        foreground: "#e7e2d8"
 
   typography:
     pack: "academic"
 
   layout:
-    radius: "md"
+    radius: "sm"
     spacing: "comfortable"
     avatar_shape: circle
 
@@ -41,11 +44,11 @@ hugoblox:
     enable: true
     style: navbar
     sticky: true
-    align: center
+    align: left
     search: false
     theme_toggle: true
     theme_picker: false
-    language_switcher: false
+    language_switcher: true
     cta:
       enable: false
       text: ""
@@ -53,7 +56,7 @@ hugoblox:
 
   footer:
     style: minimal
-    language_switcher: false
+    language_switcher: true
     text: ""
 
   copyright:
@@ -90,7 +93,7 @@ hugoblox:
     toc:
       enable: true
     reading_time:
-      enable: true
+      enable: false
     citations:
       style: apa
 
