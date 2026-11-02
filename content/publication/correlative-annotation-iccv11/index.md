@@ -15,6 +15,9 @@ publishDate: '2011-11-01T00:00:00Z'
 publication_types: ['paper-conference']
 
 publication: '2011 International Conference on Computer Vision (ICCV 2011)'
+hugoblox:
+  ids:
+    doi: '10.1109/ICCV.2011.6126300'
 
 featured: false
 

@@ -7,12 +7,14 @@ status:
   icon: ☕️
 
 superuser: true
-role: Research Scientist
+role: Research Scientist / Senior Technology Research Expert
+
+email: 'wubeen@outlook.com'
 
 organizations:
   - name: Database and Storage Lab, Alibaba Cloud
 
-bio: Research Scientist at Alibaba Cloud, working on Agentic RAG, NL2SQL, and AI agents.
+bio: Research Scientist / Senior Technology Research Expert at Alibaba Cloud, working on Agentic RAG, NL2SQL, and AI agents.
 
 interests:
   - Agentic RAG, NL2SQL, and AI Agents
@@ -70,7 +72,7 @@ skills:
 social:
   - icon: envelope
     icon_pack: fas
-    link: '/#contact'
+    link: 'mailto:wubeen@outlook.com'
   - icon: twitter
     icon_pack: fab
     link: https://twitter.com/wubeen
@@ -79,7 +81,16 @@ social:
       header: true
   - icon: graduation-cap
     icon_pack: fas
-    link: https://scholar.google.com.hk/citations?user=YnIdL7oAAAAJ&hl=en
+    link: https://scholar.google.com/citations?user=YnIdL7oAAAAJ&hl=en
+  - icon: dblp
+    icon_pack: ai
+    link: https://dblp.org/pid/98/4432-3.html
+  - icon: orcid
+    icon_pack: ai
+    link: https://orcid.org/0000-0002-4743-1006
+  - icon: semantic-scholar
+    icon_pack: ai
+    link: https://www.semanticscholar.org/author/2152563567
   - icon: github
     icon_pack: fab
     link: https://github.com/wubeen

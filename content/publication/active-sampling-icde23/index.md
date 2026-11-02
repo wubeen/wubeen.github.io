@@ -16,6 +16,9 @@ publishDate: '2023-04-01T00:00:00Z'
 publication_types: ['paper-conference']
 
 publication: 'IEEE 39th International Conference on Data Engineering (ICDE 2023)'
+hugoblox:
+  ids:
+    doi: '10.1109/ICDE55515.2023.00068'
 
 featured: false
 

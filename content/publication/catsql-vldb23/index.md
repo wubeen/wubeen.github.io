@@ -15,6 +15,9 @@ publishDate: '2023-02-01T00:00:00Z'
 publication_types: ['paper-conference']
 
 publication: 'Proceedings of the VLDB Endowment, 16(6), 2023'
+hugoblox:
+  ids:
+    doi: '10.14778/3583140.3583165'
 
 featured: true
 

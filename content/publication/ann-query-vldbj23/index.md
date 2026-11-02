@@ -18,6 +18,9 @@ publishDate: '2023-01-01T00:00:00Z'
 publication_types: ['article-journal']
 
 publication: 'The VLDB Journal, 32(3), 2023'
+hugoblox:
+  ids:
+    doi: '10.1007/s00778-022-00762-0'
 
 featured: false
 

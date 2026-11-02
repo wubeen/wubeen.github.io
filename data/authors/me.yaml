@@ -8,13 +8,14 @@ name:
   alternate: ''
   pronunciation: ''
   pronouns: ''
+email: wubeen@outlook.com
 postnominals:
   - PhD
 status:
   icon: "☕️"
-role: Research Scientist
+role: Research Scientist / Senior Technology Research Expert
 bio: |
-  Research Scientist at Alibaba Cloud, working on Agentic RAG, NL2SQL, and AI agents.
+  Research Scientist / Senior Technology Research Expert at Alibaba Cloud, working on Agentic RAG, NL2SQL, and AI agents.
 
 affiliations:
   - name: Database and Storage Lab, Alibaba Cloud
@@ -22,7 +23,7 @@ affiliations:
 
 links:
   - icon: at-symbol
-    url: '/#contact'
+    url: 'mailto:wubeen@outlook.com'
     label: E-mail Me
   - icon: brands/x
     url: https://twitter.com/wubeen
@@ -31,7 +32,13 @@ links:
   - icon: brands/linkedin
     url: https://www.linkedin.com/in/bin-wu-15213438/
   - icon: academicons/google-scholar
-    url: https://scholar.google.com.hk/citations?user=YnIdL7oAAAAJ&hl=en
+    url: https://scholar.google.com/citations?user=YnIdL7oAAAAJ&hl=en
+  - icon: academicons/dblp
+    url: https://dblp.org/pid/98/4432-3.html
+  - icon: academicons/orcid
+    url: https://orcid.org/0000-0002-4743-1006
+  - icon: academicons/semantic-scholar
+    url: https://www.semanticscholar.org/author/2152563567
 
 interests:
   - Agentic RAG, NL2SQL, and AI Agents
@@ -51,7 +58,7 @@ education:
     end: 2012-06-30
 
 experience:
-  - role: Research Scientist
+  - role: Research Scientist / Senior Technology Research Expert
     org: Alibaba Cloud, Alibaba Group
     start: 2018-12-13
     summary: |

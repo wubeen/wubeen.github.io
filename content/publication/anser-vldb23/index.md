@@ -16,10 +16,13 @@ publishDate: '2023-08-01T00:00:00Z'
 publication_types: ['paper-conference']
 
 publication: 'Proceedings of the VLDB Endowment, 16(12), 2023'
+hugoblox:
+  ids:
+    doi: '10.14778/3611540.3611553'
 
 featured: true
 
 links:
   - type: pdf
-    url: 'https://dl.acm.org/doi/10.14778/3611540.3611553'
+    url: 'https://www.vldb.org/pvldb/vol16/p3636-wu.pdf'
 ---
