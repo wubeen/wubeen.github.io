@@ -26,11 +26,11 @@ zh:
   weight: 2
   title: Bin Wu 的主页
   params:
-    description: Bin Wu，阿里云数据库与存储实验室研究科学家 / 资深技术研究专家。研究方向包括 Agentic RAG、NL2SQL 与 AI Agent。
+    description: Bin Wu，阿里云数据库与存储实验室研究科学家 / 高级技术研究专家。研究方向包括 Agentic RAG、NL2SQL 与 AI Agent。
     hugoblox:
       identity:
-        tagline: 研究科学家 / 资深技术研究专家
-        description: Bin Wu，阿里云数据库与存储实验室研究科学家 / 资深技术研究专家。研究与生产工作涵盖 Agentic RAG、NL2SQL 与 AI Agent。
+        tagline: 研究科学家 / 高级技术研究专家
+        description: Bin Wu，阿里云数据库与存储实验室研究科学家 / 高级技术研究专家。研究与生产工作涵盖 Agentic RAG、NL2SQL 与 AI Agent。
       locale:
         date_format: ":date_long"
       copyright:
