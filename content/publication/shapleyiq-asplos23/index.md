@@ -18,7 +18,7 @@ hugoblox:
   ids:
     doi: '10.1145/3623278.3624771'
 
-featured: false
+featured: true
 
 
 ---

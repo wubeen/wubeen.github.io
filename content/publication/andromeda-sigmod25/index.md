@@ -19,7 +19,7 @@ hugoblox:
   ids:
     doi: '10.1145/3722212.3725080'
 
-featured: false
+featured: true
 
 
 ---
