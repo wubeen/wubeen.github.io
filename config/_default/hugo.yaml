@@ -40,7 +40,18 @@ cascade:
 
 build:
   writeStats: true
-enableGitInfo: false
+enableGitInfo: true
+frontmatter:
+  date:
+    - date
+    - publishDate
+    - ":git"
+    - lastmod
+  lastmod:
+    - ":git"
+    - lastmod
+    - date
+    - publishDate
 summaryLength: 30
 pagination:
   pagerSize: 10
