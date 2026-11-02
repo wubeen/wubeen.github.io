@@ -10,7 +10,7 @@ baseURL: 'https://wubeen.github.io/'
 ############################
 
 defaultContentLanguage: en
-hasCJKLanguage: false
+hasCJKLanguage: true
 defaultContentLanguageInSubdir: false
 removePathAccents: true
 
@@ -23,6 +23,16 @@ cascade:
       path: /slides/**
       kind: page
     outputs: [HTML, present]
+  - target:
+      path: /publication/**
+    params:
+      reading_time: false
+  - target:
+      path: /authors/**
+      kind: term
+    build:
+      render: never
+      list: never
 
 ############################
 ## ADVANCED

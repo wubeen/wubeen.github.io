@@ -1,0 +1,6 @@
+# Project overrides for the Chinese UI. Paper titles stay in English.
+- id: present
+  translation: 至今
+
+- id: publication
+  translation: 发表于

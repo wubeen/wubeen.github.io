@@ -1,22 +1,51 @@
-# Languages
-#   Create a section for each of your site's languages.
-#   Documentation: https://docs.hugoblox.com/reference/language/
+# Per-language menus live here so English and Chinese navigation stay separate.
 
-# Default language
 en:
   languageCode: en-us
-  # Uncomment for multi-lingual sites, and move English content into `en` sub-folder.
-  #contentDir: content/en
+  languageName: English
+  weight: 1
+  title: Bin Wu's Homepage
+  menu:
+    main:
+      - name: Bio
+        url: /#about
+        weight: 10
+      - name: Experience
+        url: /#experience
+        weight: 20
+      - name: Awards
+        url: /#awards
+        weight: 30
+      - name: Papers
+        url: /#papers
+        weight: 40
 
-# Uncomment the lines below to configure your website in a second language.
-#zh:
-#  languageCode: zh-Hans
-#  contentDir: content/zh
-#  title: Chinese website title...
-#  params:
-#    description: Site description in Chinese...
-#  menu:
-#    main:
-#      - name: 传
-#        url: '#about'
-#        weight: 1
+zh:
+  languageCode: zh-Hans
+  languageName: 中文
+  weight: 2
+  title: Bin Wu 的主页
+  params:
+    description: Bin Wu，阿里云数据库与存储实验室研究科学家 / 资深技术研究专家。研究方向包括 Agentic RAG、NL2SQL 与 AI Agent。
+    hugoblox:
+      identity:
+        tagline: 研究科学家 / 资深技术研究专家
+        description: Bin Wu，阿里云数据库与存储实验室研究科学家 / 资深技术研究专家。研究与生产工作涵盖 Agentic RAG、NL2SQL 与 AI Agent。
+      locale:
+        date_format: ":date_long"
+      copyright:
+        notice: "© {year} Bin Wu。本作品采用 {license} 许可。"
+  menu:
+    main:
+      - name: 简介
+        url: /#about
+        weight: 10
+      - name: 经历
+        url: /#experience
+        weight: 20
+      - name: 奖项
+        url: /#awards
+        weight: 30
+      - name: 论文
+        url: /#papers
+        weight: 40

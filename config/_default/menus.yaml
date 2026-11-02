@@ -1,8 +1,1 @@
-# Navigation Links
-main:
-  - name: Bio
-    url: /
-    weight: 10
-  - name: Papers
-    url: /#papers
-    weight: 20
+# Navigation is defined per language in config/_default/languages.yaml.
