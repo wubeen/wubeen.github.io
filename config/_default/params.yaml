@@ -23,8 +23,8 @@ hugoblox:
       background: ""
       foreground: ""
       header:
-        background: "#16324a"
-        foreground: "#f7f4ee"
+        background: ""
+        foreground: ""
       footer:
         background: "#16324a"
         foreground: "#e7e2d8"

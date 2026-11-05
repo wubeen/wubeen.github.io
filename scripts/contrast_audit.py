@@ -1,283 +1,157 @@
 #!/usr/bin/env python3
-"""WCAG contrast audit for a rendered Hugo page.
-
-Renders light and dark. For each visible text run and icon, hides the
-foreground, screenshots the real background pixels, and computes contrast.
-AA is 4.5:1 for body text and 3:1 for large text and icons.
-
-Exits 1 when any sample is below AA.
 """
+Contrast audit for a rendered web page (light + dark mode).
 
-import argparse
-import io
-import sys
-from pathlib import Path
+How it works: renders the page twice per color mode. Pass 1 hides all text and
+takes a screenshot, so it captures the real background behind every text
+element: gradients, blurred "mesh" orbs, translucent cards. Pass 2 reads each
+text element's computed color, size and weight. The script then computes the
+WCAG contrast of the text color against the actual background pixels behind it.
 
-from PIL import Image
+Usage:
+  pip install playwright && playwright install chromium
+  python3 contrast_audit.py http://localhost:1313/ [--out report_dir] [--width 1280]
+
+Exit code 1 if any text fails WCAG AA (4.5:1 normal, 3:1 large text).
+"""
+import argparse, json, os, sys
 from playwright.sync_api import sync_playwright
-
-
-def parse_args():
-    parser = argparse.ArgumentParser(description="Audit WCAG contrast on a page")
-    parser.add_argument("url")
-    parser.add_argument("--width", type=int, default=1280)
-    parser.add_argument("--out", default="/tmp/audit")
-    parser.add_argument("--height", type=int, default=900)
-    return parser.parse_args()
-
-
-def channel(value):
-    value = value / 255.0
-    return value / 12.92 if value <= 0.04045 else ((value + 0.055) / 1.055) ** 2.4
-
-
-def luminance(rgb):
-    r, g, b = (channel(c) for c in rgb[:3])
-    return 0.2126 * r + 0.7152 * g + 0.0722 * b
-
-
-def contrast_ratio(a, b):
-    l1, l2 = luminance(a), luminance(b)
-    lighter, darker = max(l1, l2), min(l1, l2)
-    return (lighter + 0.05) / (darker + 0.05)
-
-
-def parse_color(value):
-    value = (value or "").strip()
-    if not value or value == "transparent":
-        return None
-    if value.startswith("#"):
-        hex_value = value[1:]
-        if len(hex_value) == 3:
-            hex_value = "".join(ch * 2 for ch in hex_value)
-        if len(hex_value) >= 6:
-            return tuple(int(hex_value[i : i + 2], 16) for i in (0, 2, 4))
-        return None
-    if value.startswith("rgb"):
-        nums = value[value.find("(") + 1 : value.find(")")].split(",")
-        parts = []
-        for num in nums[:3]:
-            num = num.strip()
-            if num.endswith("%"):
-                parts.append(int(round(float(num[:-1]) * 2.55)))
-            else:
-                parts.append(int(round(float(num))))
-        if len(parts) == 3:
-            return tuple(parts)
-    return None
-
+from PIL import Image
 
 COLLECT_JS = r"""
 () => {
+  const cv = document.createElement('canvas'); cv.width = cv.height = 1;
+  const cx = cv.getContext('2d', { willReadFrequently: true });
+  const toRGBA = (c) => {
+    cx.clearRect(0, 0, 1, 1); cx.fillStyle = '#000'; cx.fillStyle = c;
+    cx.fillRect(0, 0, 1, 1); const d = cx.getImageData(0, 0, 1, 1).data;
+    return [d[0], d[1], d[2], d[3] / 255];
+  };
   const out = [];
-  const seen = new Set();
-
-  function visible(el) {
-    const style = getComputedStyle(el);
-    if (style.display === "none" || style.visibility === "hidden") return false;
-    if (parseFloat(style.opacity || "1") === 0) return false;
-    const rect = el.getBoundingClientRect();
-    if (rect.width < 2 || rect.height < 2) return false;
-    return true;
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_ELEMENT);
+  let el;
+  while ((el = walker.nextNode())) {
+    // text nodes with at least one letter or digit (skips emoji-only nodes such as a status icon)
+    const own = [...el.childNodes].filter(n => n.nodeType === 3 && /[\p{L}\p{N}]/u.test(n.textContent));
+    const isIcon = el.tagName.toLowerCase() === 'svg';
+    if (!own.length && !isIcon) continue;
+    if (el.closest('[aria-hidden="true"]') && !isIcon) continue;
+    if (el.closest('svg') && !isIcon) continue;
+    const cs = getComputedStyle(el);
+    if (cs.visibility === 'hidden' || cs.display === 'none') continue;
+    let r;
+    if (isIcon) { r = el.getBoundingClientRect(); }
+    else { const range = document.createRange(); range.selectNodeContents(own[0]); r = range.getBoundingClientRect(); }
+    if (r.width < 2 || r.height < 2) continue;
+    let op = 1, p = el;
+    while (p && p.nodeType === 1) { op *= parseFloat(getComputedStyle(p).opacity || '1'); p = p.parentElement; }
+    if (op < 0.05) continue;
+    const color = isIcon ? (cs.color) : cs.color;
+    const fg = toRGBA(color); fg[3] *= op;
+    const text = isIcon ? `[icon] ${(el.closest('a,button')?.getAttribute('aria-label') || el.closest('a,button')?.getAttribute('title') || '')}`
+                        : own.map(n => n.textContent.trim()).join(' ').slice(0, 70);
+    const sel = (() => { const parts = []; let e = el; for (let i = 0; e && e.nodeType === 1 && i < 4; i++, e = e.parentElement) {
+      let s = e.tagName.toLowerCase(); if (e.id) { s += '#' + e.id; parts.unshift(s); break; }
+      const c = [...e.classList].filter(x => !x.includes(':') && !x.includes('[') && !x.includes('/')).slice(0, 3); if (c.length) s += '.' + c.join('.');
+      parts.unshift(s); } return parts.join(' > '); })();
+    out.push({ text, sel, isIcon, fg, colorCss: color,
+      fontSize: parseFloat(cs.fontSize), fontWeight: parseInt(cs.fontWeight, 10) || 400,
+      x: r.left + scrollX, y: r.top + scrollY, w: r.width, h: r.height });
   }
-
-  function box(el) {
-    const rect = el.getBoundingClientRect();
-    return {
-      x: rect.x + window.scrollX,
-      y: rect.y + window.scrollY,
-      w: rect.width,
-      h: rect.height,
-    };
-  }
-
-  function push(el, kind, text, color) {
-    if (!color) return;
-    if (seen.has(el)) return;
-    if (!visible(el)) return;
-    const style = getComputedStyle(el);
-    const size = parseFloat(style.fontSize) || 16;
-    const weight = parseInt(style.fontWeight, 10) || 400;
-    seen.add(el);
-    out.push({
-      kind,
-      text: (text || "").replace(/\s+/g, " ").trim().slice(0, 80),
-      color,
-      size,
-      weight,
-      box: box(el),
-    });
-  }
-
-  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
-  let node = walker.nextNode();
-  while (node) {
-    const raw = node.nodeValue || "";
-    if (raw.trim()) {
-      const el = node.parentElement;
-      if (el && !["SCRIPT", "STYLE", "NOSCRIPT"].includes(el.tagName)) {
-        push(el, "text", raw, getComputedStyle(el).color);
-      }
-    }
-    node = walker.nextNode();
-  }
-
-  document.querySelectorAll("a, button, span, p, li, h1, h2, h3, h4, div").forEach((el) => {
-    const after = getComputedStyle(el, "::after").content;
-    if (!after || after === "none" || after === "normal" || after === '""') return;
-    const label = after.replace(/^["']|["']$/g, "");
-    if (!label.trim()) return;
-    push(el, "text", label, getComputedStyle(el).color);
-  });
-
-  document.querySelectorAll("svg").forEach((svg) => {
-    if (!visible(svg)) return;
-    const style = getComputedStyle(svg);
-    let color = style.color;
-    const painted = svg.querySelector("[stroke], [fill]");
-    if (painted) {
-      const paintedStyle = getComputedStyle(painted);
-      if (paintedStyle.stroke && paintedStyle.stroke !== "none") color = paintedStyle.stroke;
-      else if (paintedStyle.fill && paintedStyle.fill !== "none") color = paintedStyle.fill;
-    }
-    push(svg, "icon", "icon", color);
-  });
-
   return out;
 }
 """
 
-HIDE_CSS = """
-html.bw-hide-text, html.bw-hide-text * {
-  color: transparent !important;
-  -webkit-text-fill-color: transparent !important;
-  text-shadow: none !important;
-  caret-color: transparent !important;
-}
-html.bw-hide-text svg, html.bw-hide-text svg * {
-  fill: transparent !important;
-  stroke: transparent !important;
-}
+HIDE_TEXT_CSS = """
+*, *::before, *::after { color: transparent !important; -webkit-text-fill-color: transparent !important;
+  text-shadow: none !important; caret-color: transparent !important; text-decoration-color: transparent !important; }
+svg, img, picture, video, canvas { visibility: hidden !important; }
+*, *::before, *::after { animation: none !important; transition: none !important; }
 """
+FREEZE_CSS = "*, *::before, *::after { animation: none !important; transition: none !important; }"
 
+def lum(c):
+    def f(v):
+        v /= 255.0
+        return v / 12.92 if v <= 0.03928 else ((v + 0.055) / 1.055) ** 2.4
+    return 0.2126 * f(c[0]) + 0.7152 * f(c[1]) + 0.0722 * f(c[2])
 
-def sample_background(image, box):
-    width, height = image.size
-    left = max(0, int(box["x"] + box["w"] * 0.3))
-    right = min(width - 1, int(box["x"] + box["w"] * 0.7))
-    top = max(0, int(box["y"] + box["h"] * 0.3))
-    bottom = min(height - 1, int(box["y"] + box["h"] * 0.7))
-    if right < left:
-        left = right = min(width - 1, max(0, int(box["x"] + box["w"] / 2)))
-    if bottom < top:
-        top = bottom = min(height - 1, max(0, int(box["y"] + box["h"] / 2)))
-    pixels = []
-    xs = {left, (left + right) // 2, right}
-    ys = {top, (top + bottom) // 2, bottom}
-    for y in ys:
-        for x in xs:
-            pixels.append(image.getpixel((x, y))[:3])
-    pixels.sort(key=luminance)
-    return pixels[len(pixels) // 2]
+def ratio(a, b):
+    la, lb = lum(a), lum(b)
+    return (max(la, lb) + 0.05) / (min(la, lb) + 0.05)
 
+def blend(fg, bg):
+    a = fg[3]
+    return tuple(fg[i] * a + bg[i] * (1 - a) for i in range(3))
 
-def required_ratio(item):
-    if item["kind"] == "icon":
-        return 3.0
-    size = item["size"]
-    weight = item["weight"]
-    if size >= 24 or (size >= 18.67 and weight >= 700):
-        return 3.0
-    return 4.5
-
-
-def audit_mode(page, mode, out_dir, width):
-    page.evaluate(
-        """(mode) => {
-          localStorage.removeItem('hb-theme-pack');
-          localStorage.setItem('wc-color-theme', mode);
-          document.documentElement.classList.toggle('dark', mode === 'dark');
-          document.documentElement.setAttribute('data-theme-pack', '');
-        }""",
-        mode,
-    )
-    page.wait_for_timeout(250)
+def audit(page, url, mode, outdir, width):
+    page.goto(url, wait_until="networkidle")
+    page.evaluate(f"""() => {{ try {{ localStorage.setItem('wc-color-theme', '{mode}'); localStorage.removeItem('hb-theme-pack'); }} catch(e) {{}} }}""")
+    page.reload(wait_until="networkidle")
+    page.add_style_tag(content=FREEZE_CSS)
+    page.wait_for_timeout(400)
+    is_dark = page.evaluate("() => document.documentElement.classList.contains('dark')")
     items = page.evaluate(COLLECT_JS)
-    page.screenshot(path=str(out_dir / f"{mode}_page.png"), full_page=True)
-
-    page.evaluate(
-        """(css) => {
-          let style = document.getElementById('bw-hide-style');
-          if (!style) {
-            style = document.createElement('style');
-            style.id = 'bw-hide-style';
-            document.head.appendChild(style);
-          }
-          style.textContent = css;
-          document.documentElement.classList.add('bw-hide-text');
-        }""",
-        HIDE_CSS,
-    )
-    page.wait_for_timeout(100)
-    background = Image.open(io.BytesIO(page.screenshot(full_page=True))).convert("RGB")
-    page.evaluate(
-        """() => {
-          document.documentElement.classList.remove('bw-hide-text');
-        }"""
-    )
-
-    failures = []
-    for item in items:
-        fg = parse_color(item["color"])
-        if not fg:
+    shot_text = os.path.join(outdir, f"{mode}_page.png")
+    page.screenshot(path=shot_text, full_page=True)
+    page.add_style_tag(content=HIDE_TEXT_CSS)
+    page.wait_for_timeout(200)
+    shot_bg = os.path.join(outdir, f"{mode}_bg.png")
+    page.screenshot(path=shot_bg, full_page=True)
+    img = Image.open(shot_bg).convert("RGB")
+    W, H = img.size
+    rows = []
+    for it in items:
+        x0, y0 = max(0, int(it["x"])), max(0, int(it["y"]))
+        x1, y1 = min(W, int(it["x"] + it["w"])), min(H, int(it["y"] + it["h"]))
+        if x1 <= x0 or y1 <= y0:
             continue
-        bg = sample_background(background, item["box"])
-        ratio = contrast_ratio(fg, bg)
-        need = required_ratio(item)
-        if ratio + 1e-6 < need:
-            failures.append((ratio, need, item, fg, bg))
-    failures.sort(key=lambda row: row[0])
-    return failures
-
+        step = max(1, int(((x1 - x0) * (y1 - y0) / 400) ** 0.5))
+        samples = [img.getpixel((x, y)) for x in range(x0, x1, step) for y in range(y0, y1, step)]
+        rs = sorted(ratio(blend(it["fg"], s), s) for s in samples)
+        worst = rs[max(0, int(len(rs) * 0.1) - 1)]  # 10th percentile
+        large = it["fontSize"] >= 24 or (it["fontSize"] >= 18.66 and it["fontWeight"] >= 700)
+        need = 3.0 if (large or it["isIcon"]) else 4.5
+        bgmed = sorted(samples, key=lum)[len(samples) // 2]
+        rows.append({**it, "ratio": round(worst, 2), "need": need, "pass": worst >= need,
+                     "fgHex": "#%02x%02x%02x" % tuple(int(v) for v in it["fg"][:3]),
+                     "bgHex": "#%02x%02x%02x" % tuple(bgmed)})
+    return is_dark, rows
 
 def main():
-    args = parse_args()
-    out_dir = Path(args.out)
-    out_dir.mkdir(parents=True, exist_ok=True)
-    total = 0
-    with sync_playwright() as playwright:
-        browser = playwright.chromium.launch(args=["--no-sandbox", "--disable-dev-shm-usage"])
-        page = browser.new_page(
-            viewport={"width": args.width, "height": args.height},
-            device_scale_factor=1,
-        )
-        page.add_init_script(
-            """() => {
-              localStorage.removeItem('hb-theme-pack');
-              localStorage.removeItem('wc-color-theme');
-            }"""
-        )
-        page.goto(args.url, wait_until="networkidle", timeout=60000)
-        page.evaluate("() => document.fonts && document.fonts.ready")
-        for mode in ("light", "dark"):
-            failures = audit_mode(page, mode, out_dir, args.width)
-            print(f"{mode.upper()}: {len(failures)} below WCAG AA")
-            for ratio, need, item, fg, bg in failures[:80]:
-                label = item["text"] or item["kind"]
-                print(
-                    f"  {ratio:.2f}:1 need {need:.1f}  {item['size']:.0f}px/{item['weight']}  "
-                    f"fg={fg} bg={bg}  {label}"
-                )
-            if len(failures) > 80:
-                print(f"  ... {len(failures) - 80} more")
-            total += len(failures)
-        browser.close()
-    if total:
-        print(f"RESULT failures={total}")
-        return 1
-    print("RESULT failures=0")
-    return 0
-
+    ap = argparse.ArgumentParser()
+    ap.add_argument("url")
+    ap.add_argument("--out", default="contrast_report")
+    ap.add_argument("--width", type=int, default=1280)
+    ap.add_argument("--modes", default="light,dark")
+    a = ap.parse_args()
+    os.makedirs(a.out, exist_ok=True)
+    failed_any = False
+    report = {}
+    with sync_playwright() as p:
+        b = p.chromium.launch()
+        for mode in a.modes.split(","):
+            ctx = b.new_context(viewport={"width": a.width, "height": 900}, color_scheme=mode, device_scale_factor=1)
+            page = ctx.new_page()
+            is_dark, rows = audit(page, a.url, mode, a.out, a.width)
+            fails = [r for r in rows if not r["pass"]]
+            report[mode] = rows
+            print(f"\n=== {mode.upper()} (html.dark={is_dark}) — {len(rows)} text items, {len(fails)} below WCAG AA")
+            seen = set()
+            for r in sorted(fails, key=lambda r: r["ratio"]):
+                key = (r["sel"], r["fgHex"])
+                if key in seen:
+                    continue
+                seen.add(key)
+                print(f"  {r['ratio']:5.2f} < {r['need']:.1f}  {r['fgHex']} on {r['bgHex']}  {r['fontSize']:.0f}px/{r['fontWeight']}  "
+                      f"\"{r['text'][:50]}\"  [{r['sel']}]")
+            failed_any |= bool(fails)
+            ctx.close()
+        b.close()
+    with open(os.path.join(a.out, "report.json"), "w") as f:
+        json.dump(report, f, ensure_ascii=False, indent=1)
+    print(f"\nScreenshots and report.json written to {a.out}/")
+    sys.exit(1 if failed_any else 0)
 
 if __name__ == "__main__":
-    sys.exit(main())
+    main()
