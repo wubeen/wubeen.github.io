@@ -8,6 +8,31 @@
   --folio-navy: #16324a;
   --folio-rule: rgba(22, 50, 74, 0.16);
   --folio-brass: #e6d3b0;
+  --bw-text: #1c1917;
+  --bw-muted: #44403c;
+  --bw-heading: #1c1917;
+  --bw-accent: #1e3a5f;
+  --bw-accent-soft: #e7eef3;
+  --bw-card: #ffffff;
+  --bw-card-border: #d6d3d1;
+  --bw-date: #3f3a36;
+  --bw-on-accent: #f8fafc;
+  --bw-link: #1e3a5f;
+  --bw-footer: #f8fafc;
+}
+
+.dark {
+  --bw-text: #f5f5f4;
+  --bw-muted: #e7e5e4;
+  --bw-heading: #fafaf9;
+  --bw-accent: #e7d3b0;
+  --bw-accent-soft: #1e293b;
+  --bw-card: #1e293b;
+  --bw-card-border: #334155;
+  --bw-date: #e7e5e4;
+  --bw-on-accent: #0f172a;
+  --bw-link: #f5e6c8;
+  --bw-footer: #f8fafc;
 }
 
 body.page-wrapper {
@@ -323,7 +348,171 @@ article h1 {
     max-width: none;
   }
 
-  .view-citation {
+.view-citation {
     font-size: 0.95rem;
   }
+}
+
+/* Readable text colors, solid cards, and link buttons.
+   Plain CSS only; loaded after the theme stylesheet. */
+
+body.page-wrapper {
+  color: var(--bw-text);
+}
+
+#about .resume-biography,
+#about .bio-text,
+#about .bio-text p {
+  color: var(--bw-text);
+}
+
+#about h1,
+#experience h2,
+#experience h3,
+#awards h5,
+#papers .text-3xl,
+#publications .text-3xl {
+  color: var(--bw-heading);
+}
+
+#about .text-primary-600,
+.dark #about .text-primary-400 {
+  color: var(--bw-accent) !important;
+}
+
+#about .text-gray-700,
+.dark #about .text-gray-300 {
+  color: var(--bw-muted) !important;
+}
+
+#about .flex.flex-wrap.justify-center > a {
+  color: var(--bw-link);
+  background: var(--bw-card);
+  border-color: var(--bw-card-border);
+  font-size: 13px;
+}
+
+.dark #about .flex.flex-wrap.justify-center > a {
+  color: var(--bw-text);
+  background: var(--bw-card);
+}
+
+#about a.bg-gradient-to-r,
+#about a.bg-gradient-to-r:hover {
+  background-image: none !important;
+  background-color: #16324a !important;
+  color: #f8fafc !important;
+}
+
+#about a.bg-gradient-to-r svg {
+  color: #f8fafc !important;
+  stroke: #f8fafc;
+  background: transparent !important;
+}
+
+#about [class*="backdrop-blur"],
+#about .group.h-full {
+  background-image: none !important;
+  background-color: var(--bw-card) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  color: var(--bw-text);
+  border: 1px solid var(--bw-card-border);
+}
+
+#about [class*="backdrop-blur"] .text-gray-500,
+#about .group.h-full .text-gray-500,
+#experience time,
+#experience .text-gray-500,
+#awards .text-gray-500,
+#awards .text-sm {
+  color: var(--bw-date) !important;
+}
+
+#about span.rounded-full {
+  color: var(--bw-text) !important;
+  background: var(--bw-accent-soft) !important;
+  border-color: var(--bw-card-border) !important;
+}
+
+.dark .avatar-emoji {
+  color: var(--bw-text);
+  background-color: var(--bw-card);
+}
+
+#experience .rounded-xl,
+#awards .rounded-lg {
+  background-color: var(--bw-card) !important;
+  border-color: var(--bw-card-border) !important;
+  color: var(--bw-text);
+}
+
+#experience .prose,
+#experience .prose p,
+#experience .text-gray-600,
+#awards .prose,
+#awards .font-normal {
+  color: var(--bw-muted) !important;
+}
+
+#experience .text-primary-600,
+#experience .text-primary-400,
+#awards .text-primary-600,
+#awards .text-primary-300,
+.dark #experience .text-primary-400,
+.dark #awards .text-primary-300 {
+  color: var(--bw-accent) !important;
+}
+
+.view-citation,
+.view-citation .article-metadata,
+.view-citation .li-cite-author {
+  color: var(--bw-text);
+}
+
+.view-citation a.underline {
+  color: var(--bw-link);
+}
+
+.hb-attachment-link,
+.hb-attachment-link-small,
+.hb-attachment-link-large {
+  font-size: 13px !important;
+  line-height: 1.3 !important;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+  font-weight: 600 !important;
+  color: var(--bw-link) !important;
+  background: var(--bw-card);
+  border: 1px solid var(--bw-accent);
+  border-radius: 4px;
+  padding: 0.15rem 0.45rem !important;
+  margin-right: 0.35rem;
+}
+
+.callout {
+  background: var(--bw-accent-soft) !important;
+  color: var(--bw-text) !important;
+  border-left-color: var(--bw-accent) !important;
+}
+
+.callout .callout-title,
+.callout .callout-body,
+.callout .callout-body p,
+.callout .callout-content {
+  color: var(--bw-text) !important;
+}
+
+footer,
+.page-footer,
+footer p,
+.page-footer p,
+footer a,
+.page-footer a {
+  color: var(--bw-text);
+}
+
+:focus-visible {
+  outline: 2px solid var(--bw-accent);
+  outline-offset: 2px;
 }

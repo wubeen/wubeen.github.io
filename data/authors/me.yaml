@@ -60,12 +60,14 @@ education:
     institution: The Hong Kong University of Science and Technology (HKUST)
     start: 2012-09-01
     end: 2017-11-30
+    year: "2012 – 2017"
     summary: |
       Supervised by Prof. Ke Yi. Research on approximate query processing and streaming algorithms.
   - degree: BS in Computer Science
     institution: Fudan University
     start: 2008-09-01
     end: 2012-06-30
+    year: "2008 – 2012"
 
 experience:
   - role: Research Scientist / Senior Technology Research Expert
