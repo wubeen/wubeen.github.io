@@ -1,518 +1,163 @@
-/* Faculty folio: ink-and-paper academic homepage.
-   HugoBlox Kit v2 loads this file from the document head.
-   Section wrappers are classed blox-_ by the theme, so rules use section ids. */
+/*
+ * binwu.net — readability overrides for Hugo Blox Kit v0.12 (Tailwind v4)
+ * Put this file at: assets/css/custom.css
+ * The theme loads it automatically, after the theme CSS (see site_head.html).
+ * Plain CSS only: this file is minified, not run through Tailwind, so @apply will not work.
+ *
+ * Every text color below is a fixed value that passes WCAG AA (≥4.5:1)
+ * against its background in both light and dark mode, whatever theme pack is active.
+ */
 
+/* ---------- 1. Tokens ---------------------------------------------------- */
 :root {
-  --folio-paper: #f4f1ea;
-  --folio-ink: #1c1917;
-  --folio-navy: #16324a;
-  --folio-rule: rgba(22, 50, 74, 0.16);
-  --folio-brass: #e6d3b0;
-  --bw-text: #1c1917;
-  --bw-muted: #44403c;
-  --bw-heading: #1c1917;
-  --bw-accent: #1e3a5f;
-  --bw-accent-soft: #e7eef3;
-  --bw-card: #ffffff;
-  --bw-card-border: #d6d3d1;
-  --bw-date: #3f3a36;
-  --bw-on-accent: #f8fafc;
-  --bw-link: #1e3a5f;
-  --bw-footer: #f8fafc;
+  --bw-text-strong: #111827;  /* gray-900  headings, titles        17.7:1 on white */
+  --bw-text:        #1f2937;  /* gray-800  body copy                14.7:1 */
+  --bw-text-muted:  #4b5563;  /* gray-600  dates, venues, meta       7.6:1 */
+  --bw-accent:      #4338ca;  /* indigo-700 role line, links, icons  7.9:1 */
+  --bw-accent-soft: #eef2ff;  /* indigo-50 chip / button background */
+  --bw-card:        #ffffff;
+  --bw-card-border: #e5e7eb;  /* gray-200 */
+  --bw-focus:       #4338ca;
+  --bw-button:      #4338ca;  /* indigo-700: white label 7.9:1 */
+}
+html.dark {
+  --bw-text-strong: #f9fafb;  /* gray-50                            17.1:1 on #0f172a */
+  --bw-text:        #e5e7eb;  /* gray-200                           14.5:1 */
+  --bw-text-muted:  #cbd5e1;  /* slate-300  dates, venues, meta     12.0:1; 9.9:1 on the card */
+  --bw-accent:      #93c5fd;  /* blue-300                            9.9:1 */
+  --bw-accent-soft: #1e3a5f;
+  --bw-card:        #1e293b;  /* slate-800: fixed card surface, independent of the theme's gray scale */
+  --bw-card-border: #334155;  /* slate-700 */
+  --bw-focus:       #93c5fd;
+  --bw-button:      #1d4ed8;  /* blue-700: white label 6.7:1 */
 }
 
-.dark {
-  --bw-text: #f5f5f4;
-  --bw-muted: #e7e5e4;
-  --bw-heading: #fafaf9;
-  --bw-accent: #e7d3b0;
-  --bw-accent-soft: #1e293b;
-  --bw-card: #1e293b;
-  --bw-card-border: #334155;
-  --bw-date: #e7e5e4;
-  --bw-on-accent: #0f172a;
-  --bw-link: #f5e6c8;
-  --bw-footer: #f8fafc;
-}
+/* ---------- 2. Hero / biography block ------------------------------------ */
+/* Role line ("Research Scientist / …") */
+.resume-biography p.text-2xl { color: var(--bw-accent); }
+/* Affiliation and pronoun lines */
+.resume-biography p.text-lg { color: var(--bw-text); }
 
-body.page-wrapper {
-  background-color: var(--folio-paper);
-  color: var(--folio-ink);
-}
-
-.dark body.page-wrapper {
-  --folio-paper: #14181f;
-  --folio-ink: #ece8e1;
-  --folio-rule: rgba(236, 232, 225, 0.14);
-  background-color: var(--folio-paper);
-  color: var(--folio-ink);
-}
-
-#site-header .nav-link:hover,
-.dark #site-header .nav-link:hover,
-#site-header .theme-toggle,
-#site-header label,
-#site-header [data-hb-language-chooser],
-#site-header [data-hb-language-chooser] span {
-  color: var(--folio-brass);
-}
-
-#site-header [data-hb-language-chooser] {
-  color: #f7f4ee;
-  background: transparent;
-}
-
-#site-header [data-hb-language-chooser]:hover {
-  color: var(--folio-brass);
-  background: transparent;
-}
-
-/* Hiring notice directly under the navigation. */
-#news {
-  background: var(--folio-navy);
-  color: #f7f4ee;
-}
-
-#news .max-w-prose {
-  width: min(48rem, 100%);
-  max-width: 48rem;
-  align-items: flex-start;
-  text-align: left;
-  padding-top: 1.15rem;
-  padding-bottom: 1.2rem;
-  gap: 0.35rem;
-}
-
-#news .text-3xl {
-  margin: 0;
-  color: var(--folio-brass);
-  font-family: "Lora", "Source Serif 4", Georgia, serif;
-  font-size: 1.35rem;
-  font-weight: 650;
-  letter-spacing: -0.02em;
-}
-
-#news .prose {
-  color: #f7f4ee;
-  font-size: 1.02rem;
-  line-height: 1.65;
-}
-
-#news .prose p {
-  margin: 0;
-  color: #f7f4ee;
-}
-
-#news .prose a {
-  color: var(--folio-brass);
-  font-weight: 700;
-  text-underline-offset: 2px;
-}
-
-#site-header.header {
-  box-shadow: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.navbar-brand,
-h1,
-h2,
-h3,
-#papers .text-3xl,
-#publications .text-3xl,
-#awards .text-3xl,
-#experience h2 {
-  font-family: "Lora", "Source Serif 4", Georgia, serif;
-  letter-spacing: -0.02em;
-}
-
-/* Profile */
-#about .resume-biography {
-  padding-top: 2.25rem !important;
-  padding-bottom: 0.25rem !important;
-}
-
-#about h1 {
-  font-weight: 600;
-  letter-spacing: -0.03em;
-}
-
-#about .bio-text {
-  font-size: 1.05rem;
-  line-height: 1.7;
-}
-
-#about .bio-text p + p {
-  margin-top: 0.9rem;
-}
-
-/* Labeled profile links instead of anonymous icon circles. */
-#about .flex.flex-wrap.justify-center {
-  gap: 0.45rem;
-  max-width: 22rem;
-}
-
-#about .flex.flex-wrap.justify-center > a {
-  width: auto !important;
-  height: auto !important;
-  min-height: 2.05rem;
-  padding: 0.28rem 0.65rem;
-  border-radius: 999px;
-  gap: 0.35rem;
-  box-shadow: none;
-  background: transparent;
-  border: 1px solid var(--folio-rule);
-  color: var(--folio-navy);
-  font-family: "Source Serif 4", Georgia, serif;
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  transform: none;
-}
-
-#about .flex.flex-wrap.justify-center > a:hover {
-  transform: none;
-  box-shadow: none;
-  background: rgba(22, 50, 74, 0.06);
-  color: var(--folio-navy);
-}
-
-#about .flex.flex-wrap.justify-center > a svg {
-  width: 1rem;
-  height: 1rem;
-  flex: none;
-}
-
-#about .flex.flex-wrap.justify-center > a::after {
-  content: attr(title);
-  line-height: 1;
-}
-
-.dark #about .flex.flex-wrap.justify-center > a {
-  color: var(--folio-ink);
-  border-color: var(--folio-rule);
-  background: transparent;
-}
-
-.dark #about .flex.flex-wrap.justify-center > a:hover {
-  background: rgba(236, 232, 225, 0.08);
-  color: var(--folio-brass);
-}
-
-/* Solid CV button, not a gradient pill. */
-#about a.bg-gradient-to-r {
-  background-image: none !important;
-  background-color: var(--folio-navy) !important;
-  border-radius: 2px;
-  box-shadow: none;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  padding: 0.7rem 1.15rem;
-  font-size: 0.95rem;
-}
-
-#about a.bg-gradient-to-r:hover {
-  background-color: #0f2436 !important;
-  transform: none;
-  box-shadow: none;
-}
-
-/* Education is shown once, with dates and the supervisor note, in the timeline. */
-#about .mb-16:has(h3) {
-  display: none;
-}
-
-#about span.rounded-full {
-  background: transparent !important;
-  border-radius: 2px;
-  border-color: var(--folio-rule);
-  color: var(--folio-ink);
-  font-weight: 600;
-}
-
-.dark #about span.rounded-full {
-  color: var(--folio-ink);
-}
-
-/* Section measure and headings */
-#papers > .flex,
-#publications > .flex,
-#awards > .flex,
-#experience > .mx-auto {
-  width: min(48rem, 100%);
-  max-width: 48rem;
-  margin-inline: auto;
-  align-items: stretch;
-}
-
-#experience h2,
-#awards .text-3xl,
-#papers .text-3xl,
-#publications .text-3xl {
-  text-align: left;
-  font-size: 1.65rem;
-  font-weight: 650;
-  border-bottom: 1px solid var(--folio-rule);
-  padding-bottom: 0.35rem;
-  margin-bottom: 1rem;
-  width: 100%;
-}
-
-#papers .mt-16,
-#publications .mt-16 {
-  margin-top: 0.25rem !important;
-}
-
-#papers .container,
-#publications .container {
-  max-width: 48rem;
-}
-
-/* Publication lists */
-.view-citation {
-  width: 100%;
-  margin: 0 !important;
-  padding: 0.85rem 0 0.9rem;
-  border-bottom: 1px solid var(--folio-rule);
-  line-height: 1.55;
-}
-
-.view-citation .pub-icon {
-  display: none;
-}
-
-#papers .view-citation {
-  border-left: 3px solid var(--folio-navy);
-  padding-left: 0.85rem;
-}
-
-.dark #papers .view-citation {
-  border-left-color: var(--folio-brass);
-}
-
-.callout {
-  background: transparent !important;
-  border-radius: 0;
-  border-left-color: var(--folio-navy) !important;
-}
-
-.dark .callout {
-  border-left-color: var(--folio-brass) !important;
-}
-
-/* Bold the site owner's name in citation and publication author lists. */
-.li-cite-author a,
-.article-metadata a[href=""],
-.article-metadata a:not([href]),
-.article-metadata a[href="/"] {
-  font-weight: 700;
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 2px;
-}
-
-/* Timeline and award cards on paper, not glossy widgets. */
-#experience .rounded-xl,
-#awards .rounded-lg {
-  border-radius: 2px;
-  box-shadow: none;
-  background-color: rgba(255, 255, 255, 0.55);
-}
-
-.dark #experience .rounded-xl,
-.dark #awards .rounded-lg {
-  background-color: #1b222b !important;
-  border-color: #31404c !important;
-}
-
-#experience .blur-md {
-  display: none;
-}
-
-/* Publication pages should not stretch an empty column to the viewport. */
-article.flex {
-  min-height: 0 !important;
-}
-
-article h1 {
-  font-family: "Lora", "Source Serif 4", Georgia, serif;
-  letter-spacing: -0.025em;
-}
-
-@media (max-width: 640px) {
-  #about .resume-biography {
-    padding-top: 1.15rem !important;
-  }
-
-  #about .flex.flex-wrap.justify-center {
-    max-width: none;
-  }
-
-.view-citation {
-    font-size: 0.95rem;
-  }
-}
-
-/* Readable text colors, solid cards, and link buttons.
-   Plain CSS only; loaded after the theme stylesheet. */
-
-body.page-wrapper {
-  color: var(--bw-text);
-}
-
-#about .resume-biography,
-#about .bio-text,
-#about .bio-text p {
-  color: var(--bw-text);
-}
-
-#about h1,
-#experience h2,
-#experience h3,
-#awards h5,
-#papers .text-3xl,
-#publications .text-3xl {
-  color: var(--bw-heading);
-}
-
-#about .text-primary-600,
-.dark #about .text-primary-400 {
-  color: var(--bw-accent) !important;
-}
-
-#about .text-gray-700,
-.dark #about .text-gray-300 {
-  color: var(--bw-muted) !important;
-}
-
-#about .flex.flex-wrap.justify-center > a {
-  color: var(--bw-link);
-  background: var(--bw-card);
+/* Social icon buttons: solid surface, readable icon color */
+.resume-biography a.rounded-full {
+  color: var(--bw-text-muted);
+  background-color: var(--bw-card);
   border-color: var(--bw-card-border);
-  font-size: 13px;
 }
+.resume-biography a.rounded-full:hover { color: var(--bw-accent); }
 
-.dark #about .flex.flex-wrap.justify-center > a {
-  color: var(--bw-text);
-  background: var(--bw-card);
-}
-
-#about a.bg-gradient-to-r,
-#about a.bg-gradient-to-r:hover {
-  background-image: none !important;
-  background-color: #16324a !important;
-  color: #f8fafc !important;
-}
-
-#about a.bg-gradient-to-r svg {
-  color: #f8fafc !important;
-  stroke: #f8fafc;
-  background: transparent !important;
-}
-
-#about [class*="backdrop-blur"],
-#about .group.h-full {
-  background-image: none !important;
-  background-color: var(--bw-card) !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  color: var(--bw-text);
+/* Education cards: solid background (no translucent gradient + blur over the mesh) */
+.resume-biography .group.rounded-xl {
+  background-image: none;
+  background-color: var(--bw-card);
   border: 1px solid var(--bw-card-border);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+.resume-biography .group p.text-xl  { color: var(--bw-text-strong); }
+.resume-biography .group p.text-sm  { color: var(--bw-text-muted); font-size: 0.9375rem; line-height: 1.5; }
+.resume-biography .group p.text-base { color: var(--bw-text); }
+.resume-biography .group svg { color: var(--bw-accent); }
+.resume-biography .group div.rounded-full { background-color: var(--bw-card); }  /* icon circle */
+
+/* "Download CV": solid button; the gradient's teal end had a white label at <4.5:1 */
+.resume-biography a.bg-gradient-to-r {
+  background-image: none;
+  background-color: var(--bw-button);
+  color: #ffffff;
+}
+.resume-biography a.bg-gradient-to-r:hover { filter: brightness(1.1); }
+
+/* Interest chips */
+.resume-biography .flex-wrap > span.rounded-full {
+  color: var(--bw-text-strong);
+  background-color: var(--bw-accent-soft);
+  border-color: var(--bw-card-border);
 }
 
-#about [class*="backdrop-blur"] .text-gray-500,
-#about .group.h-full .text-gray-500,
-#experience time,
-#experience .text-gray-500,
-#awards .text-gray-500,
-#awards .text-sm {
-  color: var(--bw-date) !important;
-}
+/* Bio paragraph */
+.resume-biography .prose { color: var(--bw-text); }
 
-#about span.rounded-full {
-  color: var(--bw-text) !important;
-  background: var(--bw-accent-soft) !important;
-  border-color: var(--bw-card-border) !important;
+/* ---------- 3. Experience & education timeline --------------------------- */
+#experience .backdrop-blur-sm.rounded-xl {
+  background-color: var(--bw-card);
+  border-color: var(--bw-card-border);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
+#experience h3, #experience .text-xl.font-bold { color: var(--bw-text-strong); }
+#experience p.font-medium { color: var(--bw-accent); }        /* company / institution */
+#experience .shrink-0.text-sm,                               /* date badge */
+#experience time { color: var(--bw-text-muted); font-size: 0.9375rem; }
+#experience time span { color: var(--bw-accent); }          /* "Present" */
+#experience .prose { color: var(--bw-text); }               /* description */
+#experience a.text-sm { color: var(--bw-text-muted); }
+#experience a.text-sm:hover { color: var(--bw-accent); }
 
-.dark .avatar-emoji {
+/* ---------- 4. Awards ----------------------------------------------------- */
+#awards .p-6.rounded-lg {
+  background-color: var(--bw-card);
+  border-color: var(--bw-card-border);
+}
+#awards h5 { color: var(--bw-text-strong); }
+#awards h5 > span.inline-flex { color: var(--bw-accent); }   /* trophy icon only */
+#awards .text-sm { color: var(--bw-text-muted); line-height: 1.4; }
+#awards .font-normal { color: var(--bw-text); }
+
+/* ---------- 5. Publication lists (citation view) ------------------------- */
+.pub-list-item {
   color: var(--bw-text);
+  line-height: 1.65;
+  margin-bottom: 1.25rem !important;   /* inline style sets 1rem */
+}
+.pub-list-item .li-cite-author { color: var(--bw-text-muted); }
+.pub-list-item .li-cite-author .font-bold { color: var(--bw-text-strong); }  /* your own name */
+.pub-list-item > a.underline {
+  color: var(--bw-text-strong);
+  font-weight: 600;
+  text-decoration-color: var(--bw-card-border);
+  text-underline-offset: 3px;
+}
+.pub-list-item > a.underline:hover { color: var(--bw-accent); text-decoration-color: currentColor; }
+
+/* Row of PDF / Cite / DOI buttons */
+.pub-list-item .flex-wrap { gap: 0.375rem 0.5rem; margin-top: 0.375rem; }
+.pub-list-item .flex-wrap > * { margin-inline: 0 !important; }
+
+/* PDF / Cite / DOI: was 12px uppercase, hard to read; now 13px small buttons */
+.hb-attachment-link,
+html.dark .hb-attachment-link {
+  color: var(--bw-accent);
+  font-size: 0.8125rem;
+  text-transform: none;
+  letter-spacing: 0;
+  padding: 0.125rem 0.5rem !important;
+  margin: 0 !important;
+  border: 1px solid var(--bw-card-border);
+  border-radius: 0.375rem;
   background-color: var(--bw-card);
 }
-
-#experience .rounded-xl,
-#awards .rounded-lg {
-  background-color: var(--bw-card) !important;
-  border-color: var(--bw-card-border) !important;
-  color: var(--bw-text);
+.hb-attachment-link:hover,
+html.dark .hb-attachment-link:hover {
+  color: var(--bw-accent);
+  border-color: currentColor;
+  text-decoration: none;
 }
 
-#experience .prose,
-#experience .prose p,
-#experience .text-gray-600,
-#awards .prose,
-#awards .font-normal {
-  color: var(--bw-muted) !important;
-}
+/* ---------- 6. Callouts (the "Note" box, and the hiring notice if it uses one) */
+.callout .callout-content,
+.callout .callout-body { color: var(--bw-text); }
+.callout .callout-title { color: var(--bw-text-strong); }
+.callout a { color: var(--bw-accent); font-weight: 600; }
+html.dark .callout.bg-blue-100 { background-color: #172554; }  /* blue-950, calmer than blue-900 */
 
-#experience .text-primary-600,
-#experience .text-primary-400,
-#awards .text-primary-600,
-#awards .text-primary-300,
-.dark #experience .text-primary-400,
-.dark #awards .text-primary-300 {
-  color: var(--bw-accent) !important;
-}
+/* ---------- 7. Footer ----------------------------------------------------- */
+footer.container { color: var(--bw-text); }
+footer.container a { color: var(--bw-text); }
 
-.view-citation,
-.view-citation .article-metadata,
-.view-citation .li-cite-author {
-  color: var(--bw-text);
-}
-
-.view-citation a.underline {
-  color: var(--bw-link);
-}
-
-.hb-attachment-link,
-.hb-attachment-link-small,
-.hb-attachment-link-large {
-  font-size: 13px !important;
-  line-height: 1.3 !important;
-  text-transform: none !important;
-  letter-spacing: 0 !important;
-  font-weight: 600 !important;
-  color: var(--bw-link) !important;
-  background: var(--bw-card);
-  border: 1px solid var(--bw-accent);
-  border-radius: 4px;
-  padding: 0.15rem 0.45rem !important;
-  margin-right: 0.35rem;
-}
-
-.callout {
-  background: var(--bw-accent-soft) !important;
-  color: var(--bw-text) !important;
-  border-left-color: var(--bw-accent) !important;
-}
-
-.callout .callout-title,
-.callout .callout-body,
-.callout .callout-body p,
-.callout .callout-content {
-  color: var(--bw-text) !important;
-}
-
-footer,
-.page-footer,
-footer p,
-.page-footer p,
-footer a,
-.page-footer a {
-  color: var(--bw-text);
-}
-
-:focus-visible {
-  outline: 2px solid var(--bw-accent);
+/* ---------- 8. Keyboard focus (accessibility) ---------------------------- */
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--bw-focus);
   outline-offset: 2px;
+  border-radius: 4px;
 }
