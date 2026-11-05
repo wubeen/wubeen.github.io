@@ -52,12 +52,14 @@ education:
     institution: 香港科技大学（HKUST）
     start: 2012-09-01
     end: 2017-11-30
+    year: "2012 – 2017"
     summary: |
       导师为 Prof. Ke Yi。研究方向为近似查询处理与流算法。
   - degree: 计算机科学学士
     institution: 复旦大学
     start: 2008-09-01
     end: 2012-06-30
+    year: "2008 – 2012"
 
 experience:
   - role: 研究科学家 / 高级技术研究专家

@@ -14,14 +14,11 @@ hugoblox:
     mode: system
     pack: "default"
     colors:
-      primary: "#1b3a4b"
-      secondary: "#8c4a2f"
-      neutral: "stone"
+      primary: ""
+      secondary: ""
+      neutral: ""
     colors_light: {}
-    colors_dark:
-      primary: "#d4c4a8"
-      secondary: "#9ec4d4"
-      neutral: "stone"
+    colors_dark: {}
     surfaces:
       background: ""
       foreground: ""

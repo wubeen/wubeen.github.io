@@ -29,6 +29,9 @@ sections:
         education: Education
         interests: Research interests
     design:
+      background:
+        gradient_mesh:
+          enable: false
       name:
         size: sm
       avatar:
