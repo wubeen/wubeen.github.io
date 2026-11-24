@@ -23,7 +23,7 @@ sections:
         此前，他曾在华为诺亚方舟实验室担任研究员。2017 年于香港科技大学（HKUST）获得计算机科学博士学位，导师是 [Prof. Ke Yi](https://www.cse.ust.hk/~yike/)，2012 年于复旦大学获得学士学位。他曾获得 ACM SIGMOD 最佳论文奖（2016）和 ACM SIGMOD 研究亮点奖（2017）。
       button:
         text: 下载简历
-        url: uploads/resume-cn.pdf
+        url: /uploads/resume-cn.pdf
       headings:
         about: 个人简介
         education: 教育经历
